@@ -254,3 +254,41 @@ if (emailElement && emailElement.textContent.includes('@')) {
         });
     });
 }
+
+// CV Preview Modal functionality
+const previewCvBtn = document.getElementById('preview-cv-btn');
+const cvModal = document.getElementById('cv-modal');
+const closeCvModal = document.getElementById('close-cv-modal');
+const cvIframe = document.getElementById('cv-iframe');
+
+// Open modal when preview button is clicked
+previewCvBtn.addEventListener('click', () => {
+    cvIframe.src = 'cv_hamza.pdf';
+    cvModal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+});
+
+// Close modal when X is clicked
+closeCvModal.addEventListener('click', () => {
+    cvModal.style.display = 'none';
+    cvIframe.src = ''; // Clear iframe
+    document.body.style.overflow = 'auto'; // Restore scrolling
+});
+
+// Close modal when clicking outside the modal content
+cvModal.addEventListener('click', (e) => {
+    if (e.target === cvModal) {
+        cvModal.style.display = 'none';
+        cvIframe.src = ''; // Clear iframe
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cvModal.style.display === 'block') {
+        cvModal.style.display = 'none';
+        cvIframe.src = ''; // Clear iframe
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+});
