@@ -246,8 +246,9 @@ body {
 }
 
 .image-container {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
     position: relative;
     margin: 0 auto;
 }
@@ -377,7 +378,7 @@ section {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -509,7 +510,7 @@ section {
 /* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -684,6 +685,25 @@ section {
 }
 
 /* Responsive Design */
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -724,7 +744,12 @@ section {
     }
 
     .hero-image {
-        display: none;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    .image-container {
+        max-width: 250px;
     }
 
     .about-content {
@@ -840,6 +865,7 @@ section {
     }
     
     #cv-iframe {
-        height: 400px !important;
+        height: 60vh !important;
+        min-height: 400px;
     }
 }
